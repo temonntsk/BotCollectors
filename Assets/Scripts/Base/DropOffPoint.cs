@@ -9,7 +9,6 @@ public class DropOffPoint : MonoBehaviour
     {
         if (other.TryGetComponent(out Resource resource))
         {
-            Debug.Log(resource.name);
             Droped.Invoke(resource);
         }
     }
