@@ -10,7 +10,6 @@ public class Unit : MonoBehaviour
     [SerializeField] private UnitBaseBuilder _builder;
 
     private Base _base;
-    private Transform _flagPosition;
 
     public bool IsBusy { get; private set; }
 
@@ -40,11 +39,11 @@ public class Unit : MonoBehaviour
         _collector.SetResourceCell(resourceCell);
     }
 
-    public void BuildBase(Transform flagPosition)
+    public void BuildBase(BaseFlag flag)
     {
         IsBusy = true;
-        _mover.SetTarget(flagPosition);
-        _builder.SetBuild(flagPosition);
+        _mover.SetTarget(flag.transform);
+        _builder.SetFlagPosition(flag);
     }
 
     private void OnResourceCollected(Resource resource) => MoveToBase();

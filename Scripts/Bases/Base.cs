@@ -85,7 +85,7 @@ public class Base : MonoBehaviour
                 if (_canBuildBase && _baseFlag.gameObject.activeSelf&&!_baseFlag.IsReserve)
                 {
                     _baseFlag.Reserve();
-                    unit.BuildBase(_baseFlag.transform);
+                    unit.BuildBase(_baseFlag);
                     _units.Remove(unit);
                     return;
                 }

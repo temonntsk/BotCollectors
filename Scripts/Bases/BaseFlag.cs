@@ -22,6 +22,10 @@ public class BaseFlag : MonoBehaviour
 
     public void Reserve() => IsReserve = true;
 
-    public void Clear() => IsReserve = false;
+    public void Clear()
+    {
+        gameObject.SetActive(false);
+        IsReserve = false;
+    }
 
 }

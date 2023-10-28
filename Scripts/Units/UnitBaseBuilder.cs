@@ -7,7 +7,7 @@ public class UnitBaseBuilder : MonoBehaviour
 {
     [SerializeField] private Base _base;
 
-    private Transform _flagPosition;
+    private BaseFlag _flagPosition;
 
     public event Action<Base> BaseBuilt;
 
@@ -16,22 +16,23 @@ public class UnitBaseBuilder : MonoBehaviour
         if (_flagPosition == null)
             return;
 
-        if (transform.position == _flagPosition.position)
+        if (transform.position == _flagPosition.transform.position)
         {
             BuildBase(_flagPosition);
             _flagPosition = null;
         }
     }
 
-    public void SetBuild(Transform flagPosition)
+    public void SetFlagPosition(BaseFlag flagPosition)
     {
         _flagPosition = flagPosition;
     }
 
-    private void BuildBase(Transform flagPosition)
+    private void BuildBase(BaseFlag flagPosition)
     {
         _flagPosition = flagPosition;
-        Base newBase = Instantiate(_base, flagPosition.position, Quaternion.identity);
+        Base newBase = Instantiate(_base, flagPosition.transform.position, Quaternion.identity);
+        _flagPosition.Clear();
         BaseBuilt?.Invoke(newBase);
     }
 }
