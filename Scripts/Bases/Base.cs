@@ -108,7 +108,7 @@ public class Base : MonoBehaviour
     {
         _moneySystem.AddResource();
 
-        if (!_baseFlag.gameObject.activeSelf)//почему то выбивает на ошибку тут 
+        if (!_baseFlag.gameObject.activeSelf)
         {
             _moneySystem.BuyUnit();
         }
